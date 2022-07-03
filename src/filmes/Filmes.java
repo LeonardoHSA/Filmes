@@ -6,7 +6,9 @@ package filmes;
 
 import javax.swing.JOptionPane;
 import java.sql.Connection;
+import javax.swing.JFrame;
 import jdbc.PostgreSqlConnection;
+import telas.TelaInicial;
 
 /**
  *
@@ -19,13 +21,16 @@ public class Filmes {
      */
     public static void main(String[] args) {
         
-        try {
-            JOptionPane.showMessageDialog(null, "Testando a conexão");
-            Connection con = new PostgreSqlConnection().conecta();
-            JOptionPane.showMessageDialog(null, "Está conectado");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao conectar " + e);
-        }
+//        try {
+//            JOptionPane.showMessageDialog(null, "Testando a conexão");
+//            Connection con = new PostgreSqlConnection().conecta();
+//            JOptionPane.showMessageDialog(null, "Está conectado");
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Erro ao conectar " + e);
+//        }
+        
+        JFrame frame = new TelaInicial();
+        frame.setVisible(true);
     }
     
 }

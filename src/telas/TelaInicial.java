@@ -4,6 +4,8 @@
  */
 package telas;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author leonardo
@@ -14,7 +16,12 @@ public class TelaInicial extends javax.swing.JFrame {
      * Creates new form TelaInicial
      */
     public TelaInicial() {
+        super("Tela Principal");
         initComponents();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(500, 400);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,8 +34,8 @@ public class TelaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botaoFilmes = new javax.swing.JButton();
+        botaoSeries = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,14 +43,19 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Filmes e séries");
 
-        jButton1.setText("Cadastrar filme");
-        jButton1.setPreferredSize(new java.awt.Dimension(200, 25));
-
-        jButton2.setText("Cadastrar série");
-        jButton2.setPreferredSize(new java.awt.Dimension(200, 25));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoFilmes.setText("Filmes");
+        botaoFilmes.setPreferredSize(new java.awt.Dimension(200, 25));
+        botaoFilmes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoFilmesActionPerformed(evt);
+            }
+        });
+
+        botaoSeries.setText("Séries");
+        botaoSeries.setPreferredSize(new java.awt.Dimension(200, 25));
+        botaoSeries.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSeriesActionPerformed(evt);
             }
         });
 
@@ -55,31 +67,37 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(151, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(149, 149, 149))
+                    .addComponent(botaoSeries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 150, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(105, 105, 105)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addComponent(botaoFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(botaoSeries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botaoSeriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSeriesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botaoSeriesActionPerformed
+
+    private void botaoFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFilmesActionPerformed
+        JFrame frame = new TelaFilmes();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botaoFilmesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,8 +135,8 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botaoFilmes;
+    private javax.swing.JButton botaoSeries;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
