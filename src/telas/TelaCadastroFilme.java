@@ -4,7 +4,12 @@
  */
 package telas;
 
+import DAO.FilmeDAO;
+import java.util.List;
+import javaBeans.Filme;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +20,32 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastroFilme
      */
+    
+    // listar
+    public void listar(){
+        try {
+            // executando o select
+        FilmeDAO dao = new FilmeDAO();
+        List<Filme> listFilme = dao.listaFilmes();
+        
+        // colocando os dados na tabela
+        DefaultTableModel model = (DefaultTableModel) tabelaFimes.getModel();
+        model.setRowCount(0);
+        
+        for(Filme f : listFilme){
+            model.addRow(new Object[]{
+               f.getIdFilme(),
+               f.getNome(),
+               f.getGenero(),
+               f.getDirecao(),
+               f.getAno(),
+               f.getStreamer()
+            });
+        }
+        } catch (Exception e) {
+        }
+    }
+    
     public TelaCadastroFilme() {
         super("Tela de cadastro");
         initComponents();
@@ -48,9 +79,18 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         botaoCadastrar = new javax.swing.JButton();
         botaoAlterar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaFimes = new javax.swing.JTable();
+        botaoDeletar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        idTextField = new javax.swing.JTextField();
+        botaoLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu Mono", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -74,21 +114,42 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         });
 
         botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarActionPerformed(evt);
+            }
+        });
 
         botaoAlterar.setText("Alterar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaFimes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Filme", "Nome", "Genero", "Direção", "Ano", "Streamer"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelaFimes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaFimesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaFimes);
+
+        botaoDeletar.setText("Deletar");
+
+        jLabel7.setText("ID: ");
+
+        botaoLimpar.setText("Limpar");
+        botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,11 +158,15 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(botaoVoltar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoLimpar)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoDeletar)
+                        .addGap(18, 18, 18)
                         .addComponent(botaoAlterar)
                         .addGap(18, 18, 18)
                         .addComponent(botaoCadastrar))
@@ -118,11 +183,15 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(direcaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(generoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel4)
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
-                                .addComponent(anoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 219, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(anoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(idTextField))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(nomeTextField)
                             .addComponent(streamerTextField))))
                 .addContainerGap())
@@ -145,7 +214,9 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(direcaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(direcaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -156,7 +227,9 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoVoltar)
                     .addComponent(botaoCadastrar)
-                    .addComponent(botaoAlterar))
+                    .addComponent(botaoAlterar)
+                    .addComponent(botaoDeletar)
+                    .addComponent(botaoLimpar))
                 .addContainerGap())
         );
 
@@ -168,6 +241,48 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_botaoVoltarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        listar();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+        
+        try {
+            Filme obj = new Filme();
+            obj.setNome(nomeTextField.getText());
+            obj.setGenero(generoTextField.getText());
+            obj.setDirecao(direcaoTextField.getText());
+            obj.setAno(Integer.parseInt(anoTextField.getText()));
+            obj.setStreamer(streamerTextField.getText());
+            
+            FilmeDAO dao = new FilmeDAO();
+            dao.cadastraFilme(obj);
+            
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!!!");
+            
+        } catch (Exception erroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + erroSql);
+        }
+    }//GEN-LAST:event_botaoCadastrarActionPerformed
+
+    private void tabelaFimesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFimesMouseClicked
+        idTextField.setText(tabelaFimes.getValueAt(tabelaFimes.getSelectedRow(), 0).toString());
+        nomeTextField.setText(tabelaFimes.getValueAt(tabelaFimes.getSelectedRow(), 1).toString());
+        generoTextField.setText(tabelaFimes.getValueAt(tabelaFimes.getSelectedRow(), 2).toString());
+        direcaoTextField.setText(tabelaFimes.getValueAt(tabelaFimes.getSelectedRow(), 3).toString());
+        anoTextField.setText(tabelaFimes.getValueAt(tabelaFimes.getSelectedRow(), 4).toString());
+        streamerTextField.setText(tabelaFimes.getValueAt(tabelaFimes.getSelectedRow(), 5).toString());
+    }//GEN-LAST:event_tabelaFimesMouseClicked
+
+    private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
+        idTextField.setText("");
+        nomeTextField.setText("");
+        generoTextField.setText("");
+        direcaoTextField.setText("");
+        anoTextField.setText("");
+        streamerTextField.setText("");
+    }//GEN-LAST:event_botaoLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,18 +323,22 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
     private javax.swing.JTextField anoTextField;
     private javax.swing.JButton botaoAlterar;
     private javax.swing.JButton botaoCadastrar;
+    private javax.swing.JButton botaoDeletar;
+    private javax.swing.JButton botaoLimpar;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.JTextField direcaoTextField;
     private javax.swing.JTextField generoTextField;
+    private javax.swing.JTextField idTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JTextField streamerTextField;
+    private javax.swing.JTable tabelaFimes;
     // End of variables declaration//GEN-END:variables
 }
