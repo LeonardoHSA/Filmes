@@ -84,6 +84,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
         botaoLimpar = new javax.swing.JButton();
+        botaoAtencao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -121,13 +122,15 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         });
 
         botaoAlterar.setText("Alterar");
+        botaoAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAlterarActionPerformed(evt);
+            }
+        });
 
         tabelaFimes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID Filme", "Nome", "Genero", "Direção", "Ano", "Streamer"
@@ -141,6 +144,11 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelaFimes);
 
         botaoDeletar.setText("Deletar");
+        botaoDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoDeletarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("ID: ");
 
@@ -148,6 +156,13 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoLimparActionPerformed(evt);
+            }
+        });
+
+        botaoAtencao.setText("?");
+        botaoAtencao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAtencaoActionPerformed(evt);
             }
         });
 
@@ -191,6 +206,8 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(anoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                     .addComponent(idTextField))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botaoAtencao)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(nomeTextField)
                             .addComponent(streamerTextField))))
@@ -216,7 +233,8 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(direcaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoAtencao, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -284,6 +302,47 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         streamerTextField.setText("");
     }//GEN-LAST:event_botaoLimparActionPerformed
 
+    private void botaoDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDeletarActionPerformed
+        
+        try {
+            Filme obj = new Filme();
+            obj.setIdFilme(Integer.parseInt(idTextField.getText()));
+            
+            FilmeDAO dao = new FilmeDAO();
+            dao.deletaFilme(obj);
+            
+            JOptionPane.showMessageDialog(null, "Filme deletado com sucesso!!!");
+            
+        } catch (Exception erroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar: " + erroSql);
+        }
+    }//GEN-LAST:event_botaoDeletarActionPerformed
+
+    private void botaoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarActionPerformed
+        
+        try {
+            Filme obj = new Filme();
+            obj.setIdFilme(Integer.parseInt(idTextField.getText()));
+            obj.setNome(nomeTextField.getText());
+            obj.setGenero(generoTextField.getText());
+            obj.setDirecao(direcaoTextField.getText());
+            obj.setAno(Integer.parseInt(anoTextField.getText()));
+            obj.setStreamer(streamerTextField.getText());
+            
+            FilmeDAO dao = new FilmeDAO();
+            dao.alterarFilme(obj);
+            
+            JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!!!");
+        } catch (Exception erroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar !!!" + erroSql);
+        }
+    }//GEN-LAST:event_botaoAlterarActionPerformed
+
+    private void botaoAtencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtencaoActionPerformed
+        
+        JOptionPane.showMessageDialog(null, "Para cadastrar não é necessário prencher o campo 'ID'.");
+    }//GEN-LAST:event_botaoAtencaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,6 +381,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField anoTextField;
     private javax.swing.JButton botaoAlterar;
+    private javax.swing.JButton botaoAtencao;
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoDeletar;
     private javax.swing.JButton botaoLimpar;

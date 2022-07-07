@@ -81,5 +81,45 @@ public class FilmeDAO {
         }
     }
     
+    public void deletaFilme(Filme obj){
+        
+        try {
+            
+            //Criando o comando sql
+            String cmdsql = "delete from Filmes where idFilme=?";
+            
+            // organizando o cmdsql e executando 
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            
+            stmt.setInt(1, obj.getIdFilme());
+            
+            stmt.execute();
+        } catch (Exception erroSql) {
+            throw new RuntimeException(erroSql);
+        }
+    }
+    
+    public void alterarFilme(Filme obj){
+        
+        try {
+            
+            //criando a String
+            String cmdsql = "update Filmes set nome=?, genero=?, direcao=?, ano=?, streamer=? where idFilme=?";
+            
+            // organizando o cmdsql e executando
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            stmt.setString(1, obj.getNome());
+            stmt.setString(2, obj.getGenero());
+            stmt.setString(3, obj.getDirecao());
+            stmt.setInt(4, obj.getAno());
+            stmt.setString(5, obj.getStreamer());
+            stmt.setInt(6, obj.getIdFilme());
+            
+            stmt.execute();
+        } catch (Exception erroSql) {
+            throw new RuntimeException(erroSql);
+        }
+    }
+    
     
 }
