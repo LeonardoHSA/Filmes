@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/leonardo/NetBeansProjects/Filmes/src/filmes/Filmes.java</file>
-            <file>file:/home/leonardo/NetBeansProjects/Filmes/src/telas/TelaCadastroFilme.java</file>
-            <file>file:/home/leonardo/NetBeansProjects/Filmes/src/DAO/FilmeDAO.java</file>
+            <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/DAO/FilmeDAO.java</file>
+            <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/telas/TelaCadastroFilme.java</file>
+            <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/javaBeans/Filme.java</file>
+            <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/jdbc/PostgreSqlConnection.java</file>
         </group>
     </open-files>
 </project-private>
