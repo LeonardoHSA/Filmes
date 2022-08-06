@@ -121,5 +121,36 @@ public class FilmeDAO {
         }
     }
     
-    
+    public List<Filme> pesquisaFilmesNome(String nome){
+        
+        try {
+            // criando o vetor que vai armazenar os registros do banco
+            List<Filme> lista = new ArrayList<Filme>();
+            
+            // criando o comando sql
+            String cmdsql = "select * from public.Filmes where nome like ?";
+            
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            stmt.setString(1, "%"+nome+"%");
+            // guardando o resultado do select dentro de um objeto result set
+            ResultSet rs = stmt.executeQuery();
+            
+            // enquanto houver registros do select dentro de um objeto result set
+            while(rs.next()){
+                Filme f = new Filme();
+                f.setIdFilme(rs.getInt("idFilme"));
+                f.setNome(rs.getString("nome"));
+                f.setGenero(rs.getString("genero"));
+                f.setDirecao(rs.getString("direcao"));
+                f.setAno(rs.getInt("ano"));
+                f.setStreamer(rs.getString("streamer"));
+                
+                lista.add(f);
+            }
+            
+            return lista;
+        } catch (Exception erroSql) {
+            throw new RuntimeException(erroSql);
+        }
+    }
 }

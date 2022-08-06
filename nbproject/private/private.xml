@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/DAO/FilmeDAO.java</file>
             <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/telas/TelaCadastroFilme.java</file>
+            <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/telas/TelaPesquisaFilmes.java</file>
             <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/javaBeans/Filme.java</file>
+            <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/telas/TelaFilmes.java</file>
             <file>file:/C:/Users/Leonardo/Documents/NetBeansProjects/Filmes/Filmes/src/jdbc/PostgreSqlConnection.java</file>
         </group>
     </open-files>

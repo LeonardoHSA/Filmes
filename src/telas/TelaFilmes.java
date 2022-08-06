@@ -54,6 +54,11 @@ public class TelaFilmes extends javax.swing.JFrame {
 
         botaoPesquisa.setText("Pesquisa");
         botaoPesquisa.setPreferredSize(new java.awt.Dimension(200, 25));
+        botaoPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPesquisaActionPerformed(evt);
+            }
+        });
 
         botaoVoltar.setText("Voltar");
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +114,12 @@ public class TelaFilmes extends javax.swing.JFrame {
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_botaoCadastroActionPerformed
+
+    private void botaoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisaActionPerformed
+        JFrame frame = new TelaPesquisaFilmes();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botaoPesquisaActionPerformed
 
     /**
      * @param args the command line arguments
