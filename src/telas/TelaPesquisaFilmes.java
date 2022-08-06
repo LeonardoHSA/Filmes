@@ -26,7 +26,7 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
         super("Tela de pesquisa");
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(700, 500);
+        this.setSize(850, 500);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         
@@ -43,6 +43,7 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaFilmes = new javax.swing.JTable();
@@ -52,10 +53,17 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         textFieldPesquisaDecada = new javax.swing.JTextField();
         botaoPesquisaDecada = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        textFieldPesquisaAleatorio = new javax.swing.JTextField();
+        botaoPesquisaAleatoria = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("jLabel3");
+
+        jButton2.setText("Pesquisar");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(804, 516));
@@ -98,6 +106,19 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Pesquisa aleatória por grupo: ");
+
+        botaoPesquisaAleatoria.setText("Pesquisar");
+        botaoPesquisaAleatoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPesquisaAleatoriaActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ação", "Aventura", "Cinema de arte", "Chanchada", "Comédia", "Comédia de ação", "Comédia de terror", "Comédia dramática", "Comédia romântica", "Dança", "Documentário", "Docuficção", "Drama", "Espionagem", "Faroeste", "Fantasia", "Fantasia científica", "Ficção científica", "Filmes com truques", "Filmes de guerra", "Mistério", "Musical", "Filme policial", "Romance", "Terror", "Thriller" }));
+
+        jLabel5.setText("Pesquisa por gênero");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,7 +126,7 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,15 +134,24 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
                             .addComponent(jButton1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textFieldPesquisaPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botaoPesquisaNome))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(textFieldPesquisaDecada, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botaoPesquisaDecada)))
+                                .addComponent(botaoPesquisaDecada)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textFieldPesquisaAleatorio))
+                            .addComponent(textFieldPesquisaPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botaoPesquisaAleatoria)
+                            .addComponent(botaoPesquisaNome))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -129,17 +159,23 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(textFieldPesquisaPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoPesquisaNome))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(textFieldPesquisaPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoPesquisaNome))
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(textFieldPesquisaDecada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoPesquisaDecada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoPesquisaDecada)
+                    .addComponent(jLabel4)
+                    .addComponent(textFieldPesquisaAleatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoPesquisaAleatoria)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -210,6 +246,33 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_botaoPesquisaDecadaActionPerformed
 
+    private void botaoPesquisaAleatoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisaAleatoriaActionPerformed
+        try {
+            
+            int valor = Integer.parseInt(textFieldPesquisaAleatorio.getText());
+            // executando o select
+            FilmeDAO dao = new FilmeDAO();
+            List<Filme> listFilme = dao.pesquisaFilmesAleatorio(valor);
+        
+            // colocando os dados na tabela
+            DefaultTableModel model = (DefaultTableModel) tabelaFilmes.getModel();
+            model.setRowCount(0);
+        
+             for(Filme f : listFilme){
+                model.addRow(new Object[]{
+                    f.getIdFilme(),
+                    f.getNome(),
+                    f.getGenero(),
+                    f.getDirecao(),
+                    f.getAno(),
+                    f.getStreamer()
+                });
+            }
+            } catch (Exception erroSql) {
+                JOptionPane.showMessageDialog(null, "Erro ao pesquisar: " + erroSql);
+            }
+    }//GEN-LAST:event_botaoPesquisaAleatoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -246,15 +309,21 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoPesquisaAleatoria;
     private javax.swing.JButton botaoPesquisaDecada;
     private javax.swing.JButton botaoPesquisaNome;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaFilmes;
+    private javax.swing.JTextField textFieldPesquisaAleatorio;
     private javax.swing.JTextField textFieldPesquisaDecada;
     private javax.swing.JTextField textFieldPesquisaPorNome;
     // End of variables declaration//GEN-END:variables

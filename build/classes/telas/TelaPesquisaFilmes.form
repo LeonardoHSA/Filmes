@@ -22,6 +22,11 @@
         <Property name="text" type="java.lang.String" value="jLabel3"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pesquisar"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -51,7 +56,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="1" pref="780" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="1" pref="826" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -60,17 +65,27 @@
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="textFieldPesquisaPorNome" min="-2" pref="316" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botaoPesquisaNome" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="textFieldPesquisaDecada" min="-2" pref="47" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="botaoPesquisaDecada" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="textFieldPesquisaAleatorio" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="textFieldPesquisaPorNome" min="-2" pref="401" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="botaoPesquisaAleatoria" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoPesquisaNome" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox2" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -83,19 +98,26 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textFieldPesquisaPorNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botaoPesquisaNome" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldPesquisaPorNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botaoPesquisaNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textFieldPesquisaDecada" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoPesquisaDecada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textFieldPesquisaAleatorio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoPesquisaAleatoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="136" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="267" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="361" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -201,6 +223,63 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoPesquisaDecadaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pesquisa aleat&#xf3;ria por grupo: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="textFieldPesquisaAleatorio">
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoPesquisaAleatoria">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pesquisar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoPesquisaAleatoriaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox2">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="26">
+            <StringItem index="0" value="A&#xe7;&#xe3;o"/>
+            <StringItem index="1" value="Aventura"/>
+            <StringItem index="2" value="Cinema de arte"/>
+            <StringItem index="3" value="Chanchada"/>
+            <StringItem index="4" value="Com&#xe9;dia"/>
+            <StringItem index="5" value="Com&#xe9;dia de a&#xe7;&#xe3;o"/>
+            <StringItem index="6" value="Com&#xe9;dia de terror"/>
+            <StringItem index="7" value="Com&#xe9;dia dram&#xe1;tica"/>
+            <StringItem index="8" value="Com&#xe9;dia rom&#xe2;ntica"/>
+            <StringItem index="9" value="Dan&#xe7;a"/>
+            <StringItem index="10" value="Document&#xe1;rio"/>
+            <StringItem index="11" value="Docufic&#xe7;&#xe3;o"/>
+            <StringItem index="12" value="Drama"/>
+            <StringItem index="13" value="Espionagem"/>
+            <StringItem index="14" value="Faroeste"/>
+            <StringItem index="15" value="Fantasia"/>
+            <StringItem index="16" value="Fantasia cient&#xed;fica"/>
+            <StringItem index="17" value="Fic&#xe7;&#xe3;o cient&#xed;fica"/>
+            <StringItem index="18" value="Filmes com truques"/>
+            <StringItem index="19" value="Filmes de guerra"/>
+            <StringItem index="20" value="Mist&#xe9;rio"/>
+            <StringItem index="21" value="Musical"/>
+            <StringItem index="22" value="Filme policial"/>
+            <StringItem index="23" value="Romance"/>
+            <StringItem index="24" value="Terror"/>
+            <StringItem index="25" value="Thriller"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pesquisa por g&#xea;nero"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

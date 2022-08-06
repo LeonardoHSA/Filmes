@@ -190,8 +190,44 @@ public class FilmeDAO {
             
         } catch (Exception erroSql) {
             throw new RuntimeException(erroSql);
-        }
+        }  
         
+    }
+    
+    public List<Filme> pesquisaFilmesAleatorio(int valor){
+        
+        try {
+            // criando o vetor que vai armazenar os registros do banco
+            List<Filme> lista = new ArrayList<Filme>();
+            
+            // criando o comando sql
+            String cmdsql = "select * from public.Filmes order by random() limit ?";
+            
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            stmt.setInt(1, valor);
+            
+            // guardando o resultado do select dentro de um objeto result set
+            ResultSet rs = stmt.executeQuery();
+            
+            // enquanto houver registros do select dentro de um objeto result set
+            while(rs.next()){
+                Filme f = new Filme();
+                f.setIdFilme(rs.getInt("idFilme"));
+                f.setNome(rs.getString("nome"));
+                f.setGenero(rs.getString("genero"));
+                f.setDirecao(rs.getString("direcao"));
+                f.setAno(rs.getInt("ano"));
+                f.setStreamer(rs.getString("streamer"));
+                
+                lista.add(f);
+            }
+            
+            return lista;
+            
+            
+        } catch (Exception erroSql) {
+            throw new RuntimeException(erroSql);
+        }  
         
     }
 }
