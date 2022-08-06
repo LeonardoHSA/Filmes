@@ -153,4 +153,45 @@ public class FilmeDAO {
             throw new RuntimeException(erroSql);
         }
     }
+    
+    public List<Filme> pesquisaFilmesDecada(int dataInicial){
+        
+        int dataFinal = dataInicial + 10;
+        
+        try {
+            // criando o vetor que vai armazenar os registros do banco
+            List<Filme> lista = new ArrayList<Filme>();
+            
+            // criando o comando sql
+            String cmdsql = "select * from public.Filmes where ano between ? and ?";
+            
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            stmt.setInt(1,  dataInicial);
+            stmt.setInt(2, dataFinal);
+            dataFinal = 0;
+            // guardando o resultado do select dentro de um objeto result set
+            ResultSet rs = stmt.executeQuery();
+            
+            // enquanto houver registros do select dentro de um objeto result set
+            while(rs.next()){
+                Filme f = new Filme();
+                f.setIdFilme(rs.getInt("idFilme"));
+                f.setNome(rs.getString("nome"));
+                f.setGenero(rs.getString("genero"));
+                f.setDirecao(rs.getString("direcao"));
+                f.setAno(rs.getInt("ano"));
+                f.setStreamer(rs.getString("streamer"));
+                
+                lista.add(f);
+            }
+            
+            return lista;
+            
+            
+        } catch (Exception erroSql) {
+            throw new RuntimeException(erroSql);
+        }
+        
+        
+    }
 }

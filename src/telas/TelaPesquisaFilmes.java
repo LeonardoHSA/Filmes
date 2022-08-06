@@ -8,6 +8,7 @@ import DAO.FilmeDAO;
 import java.util.List;
 import javaBeans.Filme;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -48,6 +49,9 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         textFieldPesquisaPorNome = new javax.swing.JTextField();
         botaoPesquisaNome = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        textFieldPesquisaDecada = new javax.swing.JTextField();
+        botaoPesquisaDecada = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -85,6 +89,15 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Pesquisa por década: ");
+
+        botaoPesquisaDecada.setText("Pesquisa");
+        botaoPesquisaDecada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPesquisaDecadaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,11 +110,18 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jButton1))
+                            .addComponent(jButton1)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldPesquisaPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoPesquisaNome)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textFieldPesquisaPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botaoPesquisaNome))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textFieldPesquisaDecada, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botaoPesquisaDecada)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -113,7 +133,12 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(textFieldPesquisaPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoPesquisaNome))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(textFieldPesquisaDecada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoPesquisaDecada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
@@ -152,10 +177,38 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
                     f.getStreamer()
                 });
             }
-            } catch (Exception e) {
+            } catch (Exception erroSql) {
+                JOptionPane.showMessageDialog(null, "Erro ao pesquisar: " + erroSql);
             }
         
     }//GEN-LAST:event_botaoPesquisaNomeActionPerformed
+
+    private void botaoPesquisaDecadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisaDecadaActionPerformed
+        try {
+            
+            int dataInicial = Integer.parseInt(textFieldPesquisaDecada.getText());
+            // executando o select
+            FilmeDAO dao = new FilmeDAO();
+            List<Filme> listFilme = dao.pesquisaFilmesDecada(dataInicial);
+        
+            // colocando os dados na tabela
+            DefaultTableModel model = (DefaultTableModel) tabelaFilmes.getModel();
+            model.setRowCount(0);
+        
+             for(Filme f : listFilme){
+                model.addRow(new Object[]{
+                    f.getIdFilme(),
+                    f.getNome(),
+                    f.getGenero(),
+                    f.getDirecao(),
+                    f.getAno(),
+                    f.getStreamer()
+                });
+            }
+            } catch (Exception erroSql) {
+                JOptionPane.showMessageDialog(null, "Erro ao pesquisar: " + erroSql);
+            }
+    }//GEN-LAST:event_botaoPesquisaDecadaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,13 +246,16 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoPesquisaDecada;
     private javax.swing.JButton botaoPesquisaNome;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaFilmes;
+    private javax.swing.JTextField textFieldPesquisaDecada;
     private javax.swing.JTextField textFieldPesquisaPorNome;
     // End of variables declaration//GEN-END:variables
 }
