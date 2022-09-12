@@ -41,7 +41,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Ubuntu Mono", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Filmes e séries");
+        jLabel1.setText("Sessão da Tarde");
 
         botaoFilmes.setText("Filmes");
         botaoFilmes.setPreferredSize(new java.awt.Dimension(200, 25));

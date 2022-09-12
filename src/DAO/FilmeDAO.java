@@ -156,7 +156,7 @@ public class FilmeDAO {
     
     public List<Filme> pesquisaFilmesDecada(int dataInicial){
         
-        int dataFinal = dataInicial + 10;
+        int dataFinal = dataInicial + 9;
         
         try {
             // criando o vetor que vai armazenar os registros do banco
