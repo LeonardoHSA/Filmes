@@ -54,8 +54,8 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
         textFieldPesquisaDecada = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         textFieldPesquisaAleatorio = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        textFieldPesquisaPorGenero = new javax.swing.JTextField();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -64,7 +64,6 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
         jButton2.setText("Pesquisar");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(838, 484));
 
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,9 +109,13 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ação", "Aventura", "Cinema de arte", "Chanchada", "Comédia", "Comédia de ação", "Comédia de terror", "Comédia dramática", "Comédia romântica", "Dança", "Documentário", "Docuficção", "Drama", "Espionagem", "Faroeste", "Fantasia", "Fantasia científica", "Ficção científica", "Filmes com truques", "Filmes de guerra", "Mistério", "Musical", "Filme policial", "Romance", "Terror", "Thriller" }));
-
         jLabel5.setText("Pesquisa por gênero:");
+
+        textFieldPesquisaPorGenero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFieldPesquisaPorGeneroKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,9 +139,8 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
                                 .addComponent(textFieldPesquisaAleatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textFieldPesquisaPorGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(textFieldPesquisaPorNome)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
@@ -157,7 +159,7 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(textFieldPesquisaAleatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldPesquisaPorGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -262,6 +264,38 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_textFieldPesquisaAleatorioKeyPressed
 
+    private void textFieldPesquisaPorGeneroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldPesquisaPorGeneroKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+              try {
+            
+            String genero = textFieldPesquisaPorGenero.getText();
+            
+                  System.out.println(genero);
+            // executando o select
+            FilmeDAO dao = new FilmeDAO();
+            List<Filme> listFilme = dao.pesquisaFilmesGenero(genero);
+        
+            // colocando os dados na tabela
+            DefaultTableModel model = (DefaultTableModel) tabelaFilmes.getModel();
+            model.setRowCount(0);
+        
+             for(Filme f : listFilme){
+                model.addRow(new Object[]{
+                    f.getIdFilme(),
+                    f.getNome(),
+                    f.getGenero(),
+                    f.getDirecao(),
+                    f.getAno(),
+                    f.getStreamer()
+                });
+            }
+            } catch (Exception erroSql) {
+                JOptionPane.showMessageDialog(null, "Erro ao pesquisar: " + erroSql);
+            }
+        
+        }
+    }//GEN-LAST:event_textFieldPesquisaPorGeneroKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -301,7 +335,6 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -311,6 +344,7 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
     private javax.swing.JTable tabelaFilmes;
     private javax.swing.JTextField textFieldPesquisaAleatorio;
     private javax.swing.JTextField textFieldPesquisaDecada;
+    private javax.swing.JTextField textFieldPesquisaPorGenero;
     private javax.swing.JTextField textFieldPesquisaPorNome;
     // End of variables declaration//GEN-END:variables
 }
