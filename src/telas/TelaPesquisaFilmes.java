@@ -56,6 +56,7 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
         textFieldPesquisaAleatorio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         textFieldPesquisaPorGenero = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -117,6 +118,13 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Limpar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,7 +149,10 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(textFieldPesquisaPorGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(textFieldPesquisaPorNome)))
+                            .addComponent(textFieldPesquisaPorNome)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton3))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
         );
@@ -163,7 +174,9 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
@@ -296,6 +309,13 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_textFieldPesquisaPorGeneroKeyPressed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        textFieldPesquisaAleatorio.setText("");
+        textFieldPesquisaDecada.setText("");
+        textFieldPesquisaPorGenero.setText("");
+        textFieldPesquisaPorNome.setText("");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,6 +354,7 @@ public class TelaPesquisaFilmes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
