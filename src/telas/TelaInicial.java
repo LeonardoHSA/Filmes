@@ -90,7 +90,9 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoSeriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSeriesActionPerformed
-        // TODO add your handling code here:
+        JFrame frame = new TelaSeries();
+        frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_botaoSeriesActionPerformed
 
     private void botaoFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFilmesActionPerformed

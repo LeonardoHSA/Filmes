@@ -5,7 +5,7 @@
 package DAO;
 
 import java.sql.Connection;
-import javaBeans.Filme;
+import javaBeans.Serie;
 import jdbc.PostgreSqlConnection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -16,27 +16,28 @@ import java.sql.ResultSet;
  *
  * @author leonardo
  */
-public class FilmeDAO {
+public class SerieDAO {
     
     private Connection conecta;
     
-    public FilmeDAO(){
+    public SerieDAO(){
         this.conecta = new PostgreSqlConnection().conecta();
     }
     
-    public void cadastraFilme(Filme obj){
+    public void cadastraSerie(Serie obj){
         
         try {
             //criando o comando SQL
-            String cmdsql = "insert into public.Filmes (nome, genero, direcao, ano, streamer) values(?, ?, ?, ?, ?)";
+            String cmdsql = "insert into public.Series (nome, genero, direcao, anoLancamento, temporadas, streamer) values(?, ?, ?, ?, ?, ?)";
             
             // organizando o cmdsql e executando
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
             stmt.setString(1, obj.getNome());
             stmt.setString(2, obj.getGenero());
             stmt.setString(3, obj.getDirecao());
-            stmt.setInt(4, obj.getAno());
-            stmt.setString(5, obj.getStreamer());
+            stmt.setInt(4, obj.getAnoLancamento());
+            stmt.setString(5, obj.getTemporadas());
+            stmt.setString(6, obj.getStreamer());
             
             stmt.execute();
             
@@ -47,14 +48,14 @@ public class FilmeDAO {
         }
     }
     
-    public List<Filme> listaFilmes(){
+    public List<Serie> listaSeries(){
         
         try {
             // criando o vetor que vai armazenar os registros do banco
-            List<Filme> lista = new ArrayList<Filme>();
+            List<Serie> lista = new ArrayList<Serie>();
             
             // criando o comando sql
-            String cmdsql = "select * from public.Filmes";
+            String cmdsql = "select * from public.Series";
             
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
             
@@ -63,15 +64,16 @@ public class FilmeDAO {
             
             // enquanto houver registros do select dentro de um objeto result set
             while(rs.next()){
-                Filme f = new Filme();
-                f.setIdFilme(rs.getInt("idFilme"));
-                f.setNome(rs.getString("nome"));
-                f.setGenero(rs.getString("genero"));
-                f.setDirecao(rs.getString("direcao"));
-                f.setAno(rs.getInt("ano"));
-                f.setStreamer(rs.getString("streamer"));
+                Serie s = new Serie();
+                s.setIdSerie(rs.getInt("idSerie"));
+                s.setNome(rs.getString("nome"));
+                s.setGenero(rs.getString("genero"));
+                s.setDirecao(rs.getString("direcao"));
+                s.setAnoLancamento(rs.getInt("anoLancamento"));
+                s.setTemporadas(rs.getString("temporadas"));
+                s.setStreamer(rs.getString("streamer"));
                 
-                lista.add(f);
+                lista.add(s);
             }
             
             return lista;
@@ -80,17 +82,17 @@ public class FilmeDAO {
         }
     }
     
-    public void deletaFilme(Filme obj){
+    public void deletaSerie(Serie obj){
         
         try {
             
             //Criando o comando sql
-            String cmdsql = "delete from Filmes where idFilme=?";
+            String cmdsql = "delete from public.Series where idSerie=?";
             
             // organizando o cmdsql e executando 
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
             
-            stmt.setInt(1, obj.getIdFilme());
+            stmt.setInt(1, obj.getIdSerie());
             
             stmt.execute();
         } catch (Exception erroSql) {
@@ -98,21 +100,22 @@ public class FilmeDAO {
         }
     }
     
-    public void alterarFilme(Filme obj){
+    public void alterarSerie(Serie obj){
         
         try {
             
             //criando a String
-            String cmdsql = "update Filmes set nome=?, genero=?, direcao=?, ano=?, streamer=? where idFilme=?";
+            String cmdsql = "update public.Series set nome=?, genero=?, direcao=?, anoLancamento=?, temporadas=?, streamer=? where idSerie=?";
             
             // organizando o cmdsql e executando
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
             stmt.setString(1, obj.getNome());
             stmt.setString(2, obj.getGenero());
             stmt.setString(3, obj.getDirecao());
-            stmt.setInt(4, obj.getAno());
-            stmt.setString(5, obj.getStreamer());
-            stmt.setInt(6, obj.getIdFilme());
+            stmt.setInt(4, obj.getAnoLancamento());
+            stmt.setString(5, obj.getTemporadas());
+            stmt.setString(6, obj.getStreamer());
+            stmt.setInt(7, obj.getIdSerie());
             
             stmt.execute();
         } catch (Exception erroSql) {
@@ -120,14 +123,14 @@ public class FilmeDAO {
         }
     }
     
-    public List<Filme> pesquisaFilmesNome(String nome){
+    public List<Serie> pesquisaSerieNome(String nome){
         
         try {
             // criando o vetor que vai armazenar os registros do banco
-            List<Filme> lista = new ArrayList<Filme>();
+            List<Serie> lista = new ArrayList<Serie>();
             
             // criando o comando sql
-            String cmdsql = "select * from public.Filmes where nome like ?";
+            String cmdsql = "select * from public.Series where nome like ?";
             
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
             stmt.setString(1, "%"+nome+"%");
@@ -136,15 +139,16 @@ public class FilmeDAO {
             
             // enquanto houver registros do select dentro de um objeto result set
             while(rs.next()){
-                Filme f = new Filme();
-                f.setIdFilme(rs.getInt("idFilme"));
-                f.setNome(rs.getString("nome"));
-                f.setGenero(rs.getString("genero"));
-                f.setDirecao(rs.getString("direcao"));
-                f.setAno(rs.getInt("ano"));
-                f.setStreamer(rs.getString("streamer"));
+                Serie s = new Serie();
+                s.setIdSerie(rs.getInt("idSerie"));
+                s.setNome(rs.getString("nome"));
+                s.setGenero(rs.getString("genero"));
+                s.setDirecao(rs.getString("direcao"));
+                s.setAnoLancamento(rs.getInt("anoLancamento"));
+                s.setTemporadas(rs.getString("temporadas"));
+                s.setStreamer(rs.getString("streamer"));
                 
-                lista.add(f);
+                lista.add(s);
             }
             
             return lista;
@@ -153,16 +157,16 @@ public class FilmeDAO {
         }
     }
     
-    public List<Filme> pesquisaFilmesDecada(int dataInicial){
+    public List<Serie> pesquisaSeriesDecada(int dataInicial){
         
         int dataFinal = dataInicial + 9;
         
         try {
             // criando o vetor que vai armazenar os registros do banco
-            List<Filme> lista = new ArrayList<Filme>();
+            List<Serie> lista = new ArrayList<Serie>();
             
             // criando o comando sql
-            String cmdsql = "select * from public.Filmes where ano between ? and ?";
+            String cmdsql = "select * from public.Series where anoLancamento between ? and ?";
             
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
             stmt.setInt(1,  dataInicial);
@@ -173,15 +177,16 @@ public class FilmeDAO {
             
             // enquanto houver registros do select dentro de um objeto result set
             while(rs.next()){
-                Filme f = new Filme();
-                f.setIdFilme(rs.getInt("idFilme"));
-                f.setNome(rs.getString("nome"));
-                f.setGenero(rs.getString("genero"));
-                f.setDirecao(rs.getString("direcao"));
-                f.setAno(rs.getInt("ano"));
-                f.setStreamer(rs.getString("streamer"));
+                Serie s = new Serie();
+                s.setIdSerie(rs.getInt("idSerie"));
+                s.setNome(rs.getString("nome"));
+                s.setGenero(rs.getString("genero"));
+                s.setDirecao(rs.getString("direcao"));
+                s.setAnoLancamento(rs.getInt("anoLancamento"));
+                s.setTemporadas(rs.getString("temporadas"));
+                s.setStreamer(rs.getString("streamer"));
                 
-                lista.add(f);
+                lista.add(s);
             }
             
             return lista;
@@ -193,14 +198,14 @@ public class FilmeDAO {
         
     }
     
-    public List<Filme> pesquisaFilmesAleatorio(int valor){
+    public List<Serie> pesquisaSeriesAleatorio(int valor){
         
         try {
             // criando o vetor que vai armazenar os registros do banco
-            List<Filme> lista = new ArrayList<Filme>();
+            List<Serie> lista = new ArrayList<Serie>();
             
             // criando o comando sql
-            String cmdsql = "select * from public.Filmes order by random() limit ?";
+            String cmdsql = "select * from public.Series order by random() limit ?";
             
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
             stmt.setInt(1, valor);
@@ -210,15 +215,16 @@ public class FilmeDAO {
             
             // enquanto houver registros do select dentro de um objeto result set
             while(rs.next()){
-                Filme f = new Filme();
-                f.setIdFilme(rs.getInt("idFilme"));
-                f.setNome(rs.getString("nome"));
-                f.setGenero(rs.getString("genero"));
-                f.setDirecao(rs.getString("direcao"));
-                f.setAno(rs.getInt("ano"));
-                f.setStreamer(rs.getString("streamer"));
+                Serie s = new Serie();
+                s.setIdSerie(rs.getInt("idSerie"));
+                s.setNome(rs.getString("nome"));
+                s.setGenero(rs.getString("genero"));
+                s.setDirecao(rs.getString("direcao"));
+                s.setAnoLancamento(rs.getInt("anoLancamento"));
+                s.setTemporadas(rs.getString("temporadas"));
+                s.setStreamer(rs.getString("streamer"));
                 
-                lista.add(f);
+                lista.add(s);
             }
             
             return lista;
@@ -228,5 +234,39 @@ public class FilmeDAO {
             throw new RuntimeException(erroSql);
         }  
         
+    }
+    
+    public List<Serie> pesquisaSerieGenero(String genero){
+        
+        try {
+            // criando o vetor que vai armazenar os registros do banco
+            List<Serie> lista = new ArrayList<Serie>();
+            
+            // criando o comando sql
+            String cmdsql = "select * from public.Series where genero like ?";
+            
+            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+            stmt.setString(1, "%"+genero+"%");
+            // guardando o resultado do select dentro de um objeto result set
+            ResultSet rs = stmt.executeQuery();
+            
+            // enquanto houver registros do select dentro de um objeto result set
+            while(rs.next()){
+                Serie s = new Serie();
+                s.setIdSerie(rs.getInt("idSerie"));
+                s.setNome(rs.getString("nome"));
+                s.setGenero(rs.getString("genero"));
+                s.setDirecao(rs.getString("direcao"));
+                s.setAnoLancamento(rs.getInt("anoLancamento"));
+                s.setTemporadas(rs.getString("temporadas"));
+                s.setStreamer(rs.getString("streamer"));
+                
+                lista.add(s);
+            }
+            
+            return lista;
+        } catch (Exception erroSql) {
+            throw new RuntimeException(erroSql);
+        }
     }
 }

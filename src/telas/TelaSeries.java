@@ -10,13 +10,13 @@ import javax.swing.JFrame;
  *
  * @author leonardo
  */
-public class TelaFilmes extends javax.swing.JFrame {
+public class TelaSeries extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaFilmes
      */
-    public TelaFilmes() {
-        super("Filmes");
+    public TelaSeries() {
+        super("Séries");
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500, 400);
@@ -42,7 +42,7 @@ public class TelaFilmes extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Ubuntu Mono", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Filmes");
+        jLabel1.setText("Séries");
 
         botaoCadastro.setText("Cadastro");
         botaoCadastro.setPreferredSize(new java.awt.Dimension(200, 25));
@@ -112,13 +112,13 @@ public class TelaFilmes extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
-        JFrame frame = new TelaCadastroFilme();
+        JFrame frame = new TelaCadastroSeries();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_botaoCadastroActionPerformed
 
     private void botaoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisaActionPerformed
-        JFrame frame = new TelaPesquisaFilmes();
+        JFrame frame = new TelaPesquisaSeries();
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_botaoPesquisaActionPerformed
@@ -140,20 +140,21 @@ public class TelaFilmes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaFilmes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaSeries.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaFilmes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaSeries.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaFilmes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaSeries.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaFilmes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaSeries.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaFilmes().setVisible(true);
+                new TelaSeries().setVisible(true);
             }
         });
     }
