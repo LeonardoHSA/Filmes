@@ -74,6 +74,7 @@ public class FilmeDAO {
                 lista.add(f);
             }
             
+            
             return lista;
         } catch (Exception erroSql) {
             throw new RuntimeException(erroSql);
