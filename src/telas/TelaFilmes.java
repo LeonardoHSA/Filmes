@@ -44,7 +44,11 @@ public class TelaFilmes extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Filmes");
 
+        botaoCadastro.setBackground(new java.awt.Color(51, 102, 255));
+        botaoCadastro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoCadastro.setForeground(new java.awt.Color(255, 255, 255));
         botaoCadastro.setText("Cadastro");
+        botaoCadastro.setBorderPainted(false);
         botaoCadastro.setPreferredSize(new java.awt.Dimension(200, 25));
         botaoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,7 +56,11 @@ public class TelaFilmes extends javax.swing.JFrame {
             }
         });
 
+        botaoPesquisa.setBackground(new java.awt.Color(0, 153, 51));
+        botaoPesquisa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoPesquisa.setForeground(new java.awt.Color(255, 255, 255));
         botaoPesquisa.setText("Pesquisa");
+        botaoPesquisa.setBorderPainted(false);
         botaoPesquisa.setPreferredSize(new java.awt.Dimension(200, 25));
         botaoPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +69,7 @@ public class TelaFilmes extends javax.swing.JFrame {
         });
 
         botaoVoltar.setText("Voltar");
+        botaoVoltar.setBorderPainted(false);
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);
@@ -93,9 +102,9 @@ public class TelaFilmes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(63, 63, 63)
+                .addGap(78, 78, 78)
                 .addComponent(botaoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(53, 53, 53)
                 .addComponent(botaoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addComponent(botaoVoltar)

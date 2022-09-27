@@ -99,6 +99,8 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         jLabel2.setText("Nome: ");
 
+        nomeTextField.setSelectionColor(new java.awt.Color(204, 204, 204));
+
         jLabel3.setText("Genero: ");
 
         jLabel4.setText("Ano: ");
@@ -107,21 +109,31 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         jLabel6.setText("Streamer:");
 
+        botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoVoltar.setText("Voltar");
+        botaoVoltar.setContentAreaFilled(false);
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);
             }
         });
 
+        botaoCadastrar.setBackground(new java.awt.Color(0, 153, 51));
+        botaoCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.setBorderPainted(false);
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarActionPerformed(evt);
             }
         });
 
+        botaoAlterar.setBackground(new java.awt.Color(51, 102, 255));
+        botaoAlterar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoAlterar.setForeground(new java.awt.Color(255, 255, 255));
         botaoAlterar.setText("Alterar");
+        botaoAlterar.setBorderPainted(false);
         botaoAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAlterarActionPerformed(evt);
@@ -143,7 +155,11 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaFimes);
 
+        botaoDeletar.setBackground(new java.awt.Color(255, 51, 51));
+        botaoDeletar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoDeletar.setForeground(new java.awt.Color(255, 255, 255));
         botaoDeletar.setText("Deletar");
+        botaoDeletar.setBorderPainted(false);
         botaoDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoDeletarActionPerformed(evt);
@@ -152,14 +168,20 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         jLabel7.setText("ID: ");
 
+        botaoLimpar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoLimpar.setText("Limpar");
+        botaoLimpar.setBorderPainted(false);
+        botaoLimpar.setContentAreaFilled(false);
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoLimparActionPerformed(evt);
             }
         });
 
+        botaoAtencao.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoAtencao.setForeground(new java.awt.Color(51, 102, 255));
         botaoAtencao.setText("?");
+        botaoAtencao.setContentAreaFilled(false);
         botaoAtencao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAtencaoActionPerformed(evt);
@@ -229,19 +251,18 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(anoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoAtencao, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(direcaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(direcaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoAtencao, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(streamerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoVoltar)
