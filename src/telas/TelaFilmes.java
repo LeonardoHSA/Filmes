@@ -68,8 +68,9 @@ public class TelaFilmes extends javax.swing.JFrame {
             }
         });
 
+        botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoVoltar.setText("Voltar");
-        botaoVoltar.setBorderPainted(false);
+        botaoVoltar.setContentAreaFilled(false);
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);

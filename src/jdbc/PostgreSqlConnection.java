@@ -17,7 +17,7 @@ public class PostgreSqlConnection {
         
         try {
             
-            return DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/Filmes", "postgres", "postgre");
+            return DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/Filmes", "postgres", "123");
         } catch (Exception erroSql) {
             throw new RuntimeException(erroSql);
         }
