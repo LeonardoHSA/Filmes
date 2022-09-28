@@ -66,7 +66,9 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Voltar");
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -118,6 +120,9 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
             }
         });
 
+        botaoLimpar.setBackground(new java.awt.Color(51, 102, 255));
+        botaoLimpar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoLimpar.setForeground(new java.awt.Color(255, 255, 255));
         botaoLimpar.setText("Limpar");
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

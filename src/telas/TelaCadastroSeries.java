@@ -112,13 +112,18 @@ public class TelaCadastroSeries extends javax.swing.JFrame {
 
         jLabel6.setText("Streamer:");
 
+        botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoVoltar.setText("Voltar");
+        botaoVoltar.setContentAreaFilled(false);
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);
             }
         });
 
+        botaoCadastrar.setBackground(new java.awt.Color(0, 153, 51));
+        botaoCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         botaoCadastrar.setText("Cadastrar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +131,9 @@ public class TelaCadastroSeries extends javax.swing.JFrame {
             }
         });
 
+        botaoAlterar.setBackground(new java.awt.Color(51, 102, 255));
+        botaoAlterar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoAlterar.setForeground(new java.awt.Color(255, 255, 255));
         botaoAlterar.setText("Alterar");
         botaoAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +149,7 @@ public class TelaCadastroSeries extends javax.swing.JFrame {
                 "ID Serie", "Nome", "Genero", "Direção", "Ano Lançamento", "Temporadas", "Streamer"
             }
         ));
+        tabelaSeries.setSelectionBackground(new java.awt.Color(255, 255, 255));
         tabelaSeries.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaSeriesMouseClicked(evt);
@@ -148,7 +157,11 @@ public class TelaCadastroSeries extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaSeries);
 
+        botaoDeletar.setBackground(new java.awt.Color(255, 51, 51));
+        botaoDeletar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoDeletar.setForeground(new java.awt.Color(255, 255, 255));
         botaoDeletar.setText("Deletar");
+        botaoDeletar.setBorderPainted(false);
         botaoDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoDeletarActionPerformed(evt);
@@ -157,14 +170,19 @@ public class TelaCadastroSeries extends javax.swing.JFrame {
 
         jLabel7.setText("ID: ");
 
+        botaoLimpar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoLimpar.setText("Limpar");
+        botaoLimpar.setContentAreaFilled(false);
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoLimparActionPerformed(evt);
             }
         });
 
+        botaoAtencao.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoAtencao.setForeground(new java.awt.Color(51, 102, 255));
         botaoAtencao.setText("?");
+        botaoAtencao.setContentAreaFilled(false);
         botaoAtencao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAtencaoActionPerformed(evt);

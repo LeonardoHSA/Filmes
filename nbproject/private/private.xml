@@ -3,8 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/leonardo/Documents/Estudos/ADS/4_semestre/desenvolvimento/Filmes/src/telas/TelaInicial.java</file>
             <file>file:/C:/Users/leonardo/Documents/Estudos/ADS/4_semestre/desenvolvimento/Filmes/src/filmes/Filmes.java</file>
+=======
+            <file>file:/C:/Users/Beatriz/Filmes/src/telas/TelaFilmes.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/telas/TelaPesquisaFilmes.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/telas/TelaPesquisaSeries.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/telas/TelaSeries.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/DAO/FilmeDAO.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/javaBeans/Serie.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/telas/TelaInicial.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/javaBeans/Filme.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/telas/TelaCadastroSeries.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/jdbc/PostgreSqlConnection.java</file>
+            <file>file:/C:/Users/Beatriz/Filmes/src/telas/TelaCadastroFilme.java</file>
+>>>>>>> 6340c4ac0eaf4051c283c88a5c543a72a3dbe5ee
         </group>
     </open-files>
 </project-private>

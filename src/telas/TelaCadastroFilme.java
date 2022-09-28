@@ -109,6 +109,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         jLabel6.setText("Streamer:");
 
+        botaoVoltar.setBackground(new java.awt.Color(204, 204, 204));
         botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoVoltar.setText("Voltar");
         botaoVoltar.setContentAreaFilled(false);
@@ -170,7 +171,6 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         botaoLimpar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoLimpar.setText("Limpar");
-        botaoLimpar.setBorderPainted(false);
         botaoLimpar.setContentAreaFilled(false);
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

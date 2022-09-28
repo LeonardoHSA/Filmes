@@ -44,7 +44,11 @@ public class TelaSeries extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Séries");
 
+        botaoCadastro.setBackground(new java.awt.Color(51, 102, 255));
+        botaoCadastro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoCadastro.setForeground(new java.awt.Color(255, 255, 255));
         botaoCadastro.setText("Cadastro");
+        botaoCadastro.setBorderPainted(false);
         botaoCadastro.setPreferredSize(new java.awt.Dimension(200, 25));
         botaoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +56,9 @@ public class TelaSeries extends javax.swing.JFrame {
             }
         });
 
+        botaoPesquisa.setBackground(new java.awt.Color(0, 153, 51));
+        botaoPesquisa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoPesquisa.setForeground(new java.awt.Color(255, 255, 255));
         botaoPesquisa.setText("Pesquisa");
         botaoPesquisa.setPreferredSize(new java.awt.Dimension(200, 25));
         botaoPesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +67,9 @@ public class TelaSeries extends javax.swing.JFrame {
             }
         });
 
+        botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoVoltar.setText("Voltar");
+        botaoVoltar.setContentAreaFilled(false);
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);
