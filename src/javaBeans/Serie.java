@@ -17,6 +17,7 @@ public class Serie {
     private int anoLancamento;
     private String temporadas;
     private String streamer;
+    private String assistiu;
 
     public int getIdSerie() {
         return idSerie;
@@ -25,8 +26,6 @@ public class Serie {
     public void setIdSerie(int idSerie) {
         this.idSerie = idSerie;
     }
-
-    
 
     public String getNome() {
         return nome;
@@ -75,6 +74,12 @@ public class Serie {
     public void setStreamer(String streamer) {
         this.streamer = streamer;
     }
-    
-    
+
+    public String getAssistiu() {
+        return assistiu;
+    }
+
+    public void setAssistiu(String assistiu) {
+        this.assistiu = assistiu;
+    }
 }

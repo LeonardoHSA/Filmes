@@ -39,7 +39,8 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                f.getGenero(),
                f.getDirecao(),
                f.getAno(),
-               f.getStreamer()
+               f.getStreamer(),
+               f.getAssitiu()
             });
         }
         } catch (Exception e) {
@@ -85,7 +86,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         idTextField = new javax.swing.JTextField();
         botaoLimpar = new javax.swing.JButton();
         botaoAtencao = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        assistiuCheck = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -147,7 +148,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Filme", "Nome", "Genero", "Direção", "Ano", "Streamer"
+                "ID Filme", "Nome", "Genero", "Direção", "Ano", "Streamer", "Assistiu"
             }
         ));
         tabelaFimes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,10 +190,10 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("Já assistiu ?");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        assistiuCheck.setText("Já assistiu ?");
+        assistiuCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                assistiuCheckActionPerformed(evt);
             }
         });
 
@@ -239,7 +240,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(botaoAtencao)
-                                    .addComponent(jCheckBox1))
+                                    .addComponent(assistiuCheck))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(nomeTextField)
                             .addComponent(streamerTextField))))
@@ -260,7 +261,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
                     .addComponent(generoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(anoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(assistiuCheck))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -306,6 +307,12 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
             obj.setDirecao(direcaoTextField.getText());
             obj.setAno(Integer.parseInt(anoTextField.getText()));
             obj.setStreamer(streamerTextField.getText());
+            
+            if (assistiuCheck.isSelected()) {
+                obj.setAssitiu("Sim");
+            } else {
+                obj.setAssitiu("Não");
+            }
             
             FilmeDAO dao = new FilmeDAO();
             dao.cadastraFilme(obj);
@@ -362,6 +369,12 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
             obj.setAno(Integer.parseInt(anoTextField.getText()));
             obj.setStreamer(streamerTextField.getText());
             
+            if (assistiuCheck.isSelected()) {
+                obj.setAssitiu("Sim");
+            } else {
+                obj.setAssitiu("Não");
+            }
+            
             FilmeDAO dao = new FilmeDAO();
             dao.alterarFilme(obj);
             
@@ -376,9 +389,9 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Para cadastrar não é necessário prencher o campo 'ID'.");
     }//GEN-LAST:event_botaoAtencaoActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void assistiuCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assistiuCheckActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_assistiuCheckActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,6 +430,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField anoTextField;
+    private javax.swing.JCheckBox assistiuCheck;
     private javax.swing.JButton botaoAlterar;
     private javax.swing.JButton botaoAtencao;
     private javax.swing.JButton botaoCadastrar;
@@ -426,7 +440,6 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
     private javax.swing.JTextField direcaoTextField;
     private javax.swing.JTextField generoTextField;
     private javax.swing.JTextField idTextField;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

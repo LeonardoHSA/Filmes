@@ -16,6 +16,7 @@ public class Filme {
     private String direcao;
     private int ano;
     private String streamer;
+    private String assitiu;
 
     public int getIdFilme() {
         return idFilme;
@@ -64,6 +65,12 @@ public class Filme {
     public void setStreamer(String streamer) {
         this.streamer = streamer;
     }
-    
-    
+
+    public String getAssitiu() {
+        return assitiu;
+    }
+
+    public void setAssitiu(String assitiu) {
+        this.assitiu = assitiu;
+    }
 }

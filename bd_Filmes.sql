@@ -8,7 +8,9 @@ create table Filmes
 	streamer varchar(250)
 )
 
+alter table Filmes add column assistiu char(3);
 
+select * from public.Filmes
 
 create table Series
 (
@@ -20,3 +22,7 @@ create table Series
 	temporadas varchar(250) not null, 
 	streamer varchar(250)
 )
+
+alter table Series add column assistiu char(3);
+
+select * from public.Series

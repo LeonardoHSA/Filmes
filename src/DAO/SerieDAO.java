@@ -28,7 +28,7 @@ public class SerieDAO {
         
         try {
             //criando o comando SQL
-            String cmdsql = "insert into public.Series (nome, genero, direcao, anoLancamento, temporadas, streamer) values(?, ?, ?, ?, ?, ?)";
+            String cmdsql = "insert into public.Series (nome, genero, direcao, anoLancamento, temporadas, streamer, assistiu) values(?, ?, ?, ?, ?, ?, ?)";
             
             // organizando o cmdsql e executando
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
@@ -38,6 +38,7 @@ public class SerieDAO {
             stmt.setInt(4, obj.getAnoLancamento());
             stmt.setString(5, obj.getTemporadas());
             stmt.setString(6, obj.getStreamer());
+            stmt.setString(7, obj.getAssistiu());
             
             stmt.execute();
             
@@ -72,6 +73,7 @@ public class SerieDAO {
                 s.setAnoLancamento(rs.getInt("anoLancamento"));
                 s.setTemporadas(rs.getString("temporadas"));
                 s.setStreamer(rs.getString("streamer"));
+                s.setAssistiu(rs.getString("assistiu"));
                 
                 lista.add(s);
             }
@@ -105,7 +107,7 @@ public class SerieDAO {
         try {
             
             //criando a String
-            String cmdsql = "update public.Series set nome=?, genero=?, direcao=?, anoLancamento=?, temporadas=?, streamer=? where idSerie=?";
+            String cmdsql = "update public.Series set nome=?, genero=?, direcao=?, anoLancamento=?, temporadas=?, streamer=?, assistiu=? where idSerie=?";
             
             // organizando o cmdsql e executando
             PreparedStatement stmt = conecta.prepareStatement(cmdsql);
@@ -115,7 +117,8 @@ public class SerieDAO {
             stmt.setInt(4, obj.getAnoLancamento());
             stmt.setString(5, obj.getTemporadas());
             stmt.setString(6, obj.getStreamer());
-            stmt.setInt(7, obj.getIdSerie());
+            stmt.setString(7, obj.getAssistiu());
+            stmt.setInt(8, obj.getIdSerie());
             
             stmt.execute();
         } catch (Exception erroSql) {
@@ -147,6 +150,7 @@ public class SerieDAO {
                 s.setAnoLancamento(rs.getInt("anoLancamento"));
                 s.setTemporadas(rs.getString("temporadas"));
                 s.setStreamer(rs.getString("streamer"));
+                s.setAssistiu(rs.getString("assistiu"));
                 
                 lista.add(s);
             }
@@ -185,6 +189,7 @@ public class SerieDAO {
                 s.setAnoLancamento(rs.getInt("anoLancamento"));
                 s.setTemporadas(rs.getString("temporadas"));
                 s.setStreamer(rs.getString("streamer"));
+                s.setAssistiu(rs.getString("assistiu"));
                 
                 lista.add(s);
             }
