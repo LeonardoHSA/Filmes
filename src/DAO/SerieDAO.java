@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -126,42 +127,96 @@ public class SerieDAO {
         }
     }
     
-    public List<Serie> pesquisaSerieNome(String nome){
+    public List<Serie> pesquisaSerieNome(String nome, String assistiu, String naoAssistiu){
         
         try {
             // criando o vetor que vai armazenar os registros do banco
             List<Serie> lista = new ArrayList<Serie>();
             
-            // criando o comando sql
-            String cmdsql = "select * from public.Series where nome like ?";
-            
-            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-            stmt.setString(1, "%"+nome+"%");
-            // guardando o resultado do select dentro de um objeto result set
-            ResultSet rs = stmt.executeQuery();
-            
-            // enquanto houver registros do select dentro de um objeto result set
-            while(rs.next()){
-                Serie s = new Serie();
-                s.setIdSerie(rs.getInt("idSerie"));
-                s.setNome(rs.getString("nome"));
-                s.setGenero(rs.getString("genero"));
-                s.setDirecao(rs.getString("direcao"));
-                s.setAnoLancamento(rs.getInt("anoLancamento"));
-                s.setTemporadas(rs.getString("temporadas"));
-                s.setStreamer(rs.getString("streamer"));
-                s.setAssistiu(rs.getString("assistiu"));
+            if(assistiu == "Sim" && naoAssistiu == "Não"){
                 
-                lista.add(s);
+                JOptionPane.showMessageDialog(null, "Para pesquisar séries no geral basta desmarcar as checkboxes !!");
+                
+            } else if(assistiu == "Sim"){
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where nome like ? and assistiu = ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setString(1, "%"+nome+"%");
+                stmt.setString(2, assistiu);
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            } else if(naoAssistiu == "Não"){
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where nome like ? and assistiu = ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setString(1, "%"+nome+"%");
+                stmt.setString(2, naoAssistiu);
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            } else {
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where nome like ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setString(1, "%"+nome+"%");
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
             }
-            
+               
             return lista;
         } catch (Exception erroSql) {
             throw new RuntimeException(erroSql);
         }
     }
     
-    public List<Serie> pesquisaSeriesDecada(int dataInicial){
+    public List<Serie> pesquisaSeriesDecada(int dataInicial, String assistiu, String naoAssistiu){
         
         int dataFinal = dataInicial + 9;
         
@@ -169,29 +224,182 @@ public class SerieDAO {
             // criando o vetor que vai armazenar os registros do banco
             List<Serie> lista = new ArrayList<Serie>();
             
-            // criando o comando sql
-            String cmdsql = "select * from public.Series where anoLancamento between ? and ?";
-            
-            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-            stmt.setInt(1,  dataInicial);
-            stmt.setInt(2, dataFinal);
-            dataFinal = 0;
-            // guardando o resultado do select dentro de um objeto result set
-            ResultSet rs = stmt.executeQuery();
-            
-            // enquanto houver registros do select dentro de um objeto result set
-            while(rs.next()){
-                Serie s = new Serie();
-                s.setIdSerie(rs.getInt("idSerie"));
-                s.setNome(rs.getString("nome"));
-                s.setGenero(rs.getString("genero"));
-                s.setDirecao(rs.getString("direcao"));
-                s.setAnoLancamento(rs.getInt("anoLancamento"));
-                s.setTemporadas(rs.getString("temporadas"));
-                s.setStreamer(rs.getString("streamer"));
-                s.setAssistiu(rs.getString("assistiu"));
+            if(assistiu == "Sim" && naoAssistiu == "Não"){
                 
-                lista.add(s);
+                JOptionPane.showMessageDialog(null, "Para pesquisar séries no geral basta desmarcar as checkboxes !!");
+                
+            } else if(assistiu == "Sim"){
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where anoLancamento between ? and ? and assistiu = ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setInt(1,  dataInicial);
+                stmt.setInt(2, dataFinal);
+                stmt.setString(3, assistiu);
+                dataFinal = 0;
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            } else if(naoAssistiu == "Não"){
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where anoLancamento between ? and ? and assistiu = ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setInt(1,  dataInicial);
+                stmt.setInt(2, dataFinal);
+                stmt.setString(3, naoAssistiu);
+                dataFinal = 0;
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            } else {
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where anoLancamento between ? and ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setInt(1,  dataInicial);
+                stmt.setInt(2, dataFinal);
+                dataFinal = 0;
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            }
+              
+            return lista;
+            
+            
+        } catch (Exception erroSql) {
+            throw new RuntimeException(erroSql);
+        }  
+        
+    }
+    
+    public List<Serie> pesquisaSeriesAleatorio(int valor, String assistiu, String naoAssistiu){
+        
+        try {
+            // criando o vetor que vai armazenar os registros do banco
+            List<Serie> lista = new ArrayList<Serie>();
+            
+            if(assistiu == "Sim" && naoAssistiu == "Não"){
+                
+                JOptionPane.showMessageDialog(null, "Para pesquisar séries no geral basta desmarcar as checkboxes !!");
+                
+            } else if(assistiu == "Sim"){
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where assistiu = ? order by random() limit ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setString(1, assistiu);
+                stmt.setInt(2, valor);
+
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            } else if(naoAssistiu == "Não"){
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where assistiu = ? order by random() limit ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setString(1, naoAssistiu);
+                stmt.setInt(2, valor);
+
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            } else {
+                // criando o comando sql
+                String cmdsql = "select * from public.Series order by random() limit ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setInt(1, valor);
+
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
             }
             
             return lista;
@@ -203,70 +411,87 @@ public class SerieDAO {
         
     }
     
-    public List<Serie> pesquisaSeriesAleatorio(int valor){
+    public List<Serie> pesquisaSerieGenero(String genero, String assistiu, String naoAssistiu){
         
         try {
             // criando o vetor que vai armazenar os registros do banco
             List<Serie> lista = new ArrayList<Serie>();
             
-            // criando o comando sql
-            String cmdsql = "select * from public.Series order by random() limit ?";
-            
-            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-            stmt.setInt(1, valor);
-            
-            // guardando o resultado do select dentro de um objeto result set
-            ResultSet rs = stmt.executeQuery();
-            
-            // enquanto houver registros do select dentro de um objeto result set
-            while(rs.next()){
-                Serie s = new Serie();
-                s.setIdSerie(rs.getInt("idSerie"));
-                s.setNome(rs.getString("nome"));
-                s.setGenero(rs.getString("genero"));
-                s.setDirecao(rs.getString("direcao"));
-                s.setAnoLancamento(rs.getInt("anoLancamento"));
-                s.setTemporadas(rs.getString("temporadas"));
-                s.setStreamer(rs.getString("streamer"));
+            if(assistiu == "Sim" && naoAssistiu == "Não"){
                 
-                lista.add(s);
-            }
-            
-            return lista;
-            
-            
-        } catch (Exception erroSql) {
-            throw new RuntimeException(erroSql);
-        }  
-        
-    }
-    
-    public List<Serie> pesquisaSerieGenero(String genero){
-        
-        try {
-            // criando o vetor que vai armazenar os registros do banco
-            List<Serie> lista = new ArrayList<Serie>();
-            
-            // criando o comando sql
-            String cmdsql = "select * from public.Series where genero like ?";
-            
-            PreparedStatement stmt = conecta.prepareStatement(cmdsql);
-            stmt.setString(1, "%"+genero+"%");
-            // guardando o resultado do select dentro de um objeto result set
-            ResultSet rs = stmt.executeQuery();
-            
-            // enquanto houver registros do select dentro de um objeto result set
-            while(rs.next()){
-                Serie s = new Serie();
-                s.setIdSerie(rs.getInt("idSerie"));
-                s.setNome(rs.getString("nome"));
-                s.setGenero(rs.getString("genero"));
-                s.setDirecao(rs.getString("direcao"));
-                s.setAnoLancamento(rs.getInt("anoLancamento"));
-                s.setTemporadas(rs.getString("temporadas"));
-                s.setStreamer(rs.getString("streamer"));
+                JOptionPane.showMessageDialog(null, "Para pesquisar séries no geral basta desmarcar as checkboxes !!");
                 
-                lista.add(s);
+            } else if(assistiu == "Sim"){
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where genero like ? and assistiu = ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setString(1, "%"+genero+"%");
+                stmt.setString(2, assistiu);
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            } else if(naoAssistiu == "Não"){
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where genero like ? and assistiu = ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setString(1, "%"+genero+"%");
+                stmt.setString(2, naoAssistiu);
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
+            } else {
+                // criando o comando sql
+                String cmdsql = "select * from public.Series where genero like ?";
+
+                PreparedStatement stmt = conecta.prepareStatement(cmdsql);
+                stmt.setString(1, "%"+genero+"%");
+                // guardando o resultado do select dentro de um objeto result set
+                ResultSet rs = stmt.executeQuery();
+
+                // enquanto houver registros do select dentro de um objeto result set
+                while(rs.next()){
+                    Serie s = new Serie();
+                    s.setIdSerie(rs.getInt("idSerie"));
+                    s.setNome(rs.getString("nome"));
+                    s.setGenero(rs.getString("genero"));
+                    s.setDirecao(rs.getString("direcao"));
+                    s.setAnoLancamento(rs.getInt("anoLancamento"));
+                    s.setTemporadas(rs.getString("temporadas"));
+                    s.setStreamer(rs.getString("streamer"));
+                    s.setAssistiu(rs.getString("assistiu"));
+
+                    lista.add(s);
+                }
             }
             
             return lista;

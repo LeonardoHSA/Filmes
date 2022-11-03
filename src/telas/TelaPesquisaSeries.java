@@ -27,7 +27,7 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
         super("Tela de pesquisa");
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(850, 500);
+        this.setSize(950, 600);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         
@@ -57,6 +57,8 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         textFieldPesquisaPorGenero = new javax.swing.JTextField();
         botaoLimpar = new javax.swing.JButton();
+        chackBoxAssistiu = new javax.swing.JCheckBox();
+        checkBoxNaoAssistiu = new javax.swing.JCheckBox();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -65,6 +67,7 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
         jButton2.setText("Pesquisar");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(950, 600));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Voltar");
@@ -77,13 +80,13 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
 
         tabelaSeries.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID Filme", "Nome", "Genero", "Direção", "Ano Lançamento", "Temporadas", "Streamer"
+                "ID Filme", "Nome", "Genero", "Direção", "Ano Lançamento", "Temporadas", "Streamer", "Assistiu"
             }
         ));
         jScrollPane1.setViewportView(tabelaSeries);
@@ -130,36 +133,53 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
             }
         });
 
+        chackBoxAssistiu.setText("Já assistiu ?");
+
+        checkBoxNaoAssistiu.setText("Não assistiu ?");
+        checkBoxNaoAssistiu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxNaoAssistiuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(textFieldPesquisaDecada, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jButton1)
+                                    .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldPesquisaAleatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldPesquisaPorGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(textFieldPesquisaPorNome)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(botaoLimpar))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(textFieldPesquisaDecada, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textFieldPesquisaAleatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textFieldPesquisaPorGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textFieldPesquisaPorNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(botaoLimpar))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(chackBoxAssistiu)
+                        .addGap(10, 10, 10)
+                        .addComponent(checkBoxNaoAssistiu)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,9 +196,13 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
                     .addComponent(textFieldPesquisaAleatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(textFieldPesquisaPorGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chackBoxAssistiu)
+                    .addComponent(checkBoxNaoAssistiu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(botaoLimpar))
@@ -199,9 +223,19 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
             try {
             
             String nome = textFieldPesquisaPorNome.getText();
+            String assistiu = "";
+            String naoAssistiu = "";
+            
+            if(chackBoxAssistiu.isSelected()){
+                assistiu = "Sim";
+            }
+            
+            if(checkBoxNaoAssistiu.isSelected()){
+                naoAssistiu = "Não";
+            }
             // executando o select
             SerieDAO dao = new SerieDAO();
-            List<Serie> listSerie = dao.pesquisaSerieNome(nome);
+            List<Serie> listSerie = dao.pesquisaSerieNome(nome, assistiu, naoAssistiu);
         
             // colocando os dados na tabela
             DefaultTableModel model = (DefaultTableModel) tabelaSeries.getModel();
@@ -215,7 +249,8 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
                     s.getDirecao(),
                     s.getAnoLancamento(),
                     s.getTemporadas(),
-                    s.getStreamer()
+                    s.getStreamer(),
+                    s.getAssistiu()
                 });
             }
             } catch (Exception erroSql) {
@@ -230,9 +265,19 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
             try {
             
             int dataInicial = Integer.parseInt(textFieldPesquisaDecada.getText());
+            String assistiu = "";
+            String naoAssistiu = "";
+            
+            if(chackBoxAssistiu.isSelected()){
+                assistiu = "Sim";
+            }
+            
+            if(checkBoxNaoAssistiu.isSelected()){
+                naoAssistiu = "Não";
+            }
             // executando o select
             SerieDAO dao = new SerieDAO();
-            List<Serie> listSerie = dao.pesquisaSeriesDecada(dataInicial);
+            List<Serie> listSerie = dao.pesquisaSeriesDecada(dataInicial, assistiu, naoAssistiu);
         
             // colocando os dados na tabela
             DefaultTableModel model = (DefaultTableModel) tabelaSeries.getModel();
@@ -246,7 +291,8 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
                     s.getDirecao(),
                     s.getAnoLancamento(),
                     s.getTemporadas(),
-                    s.getStreamer()
+                    s.getStreamer(),
+                    s.getAssistiu()
                 });
             }
             } catch (Exception erroSql) {
@@ -260,9 +306,19 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
             try {
             
             int valor = Integer.parseInt(textFieldPesquisaAleatorio.getText());
+            String assistiu = "";
+            String naoAssistiu = "";
+            
+            if(chackBoxAssistiu.isSelected()){
+                assistiu = "Sim";
+            }
+            
+            if(checkBoxNaoAssistiu.isSelected()){
+                naoAssistiu = "Não";
+            }
             // executando o select
             SerieDAO dao = new SerieDAO();
-            List<Serie> listSerie = dao.pesquisaSeriesAleatorio(valor);
+            List<Serie> listSerie = dao.pesquisaSeriesAleatorio(valor, assistiu, naoAssistiu);
         
             // colocando os dados na tabela
             DefaultTableModel model = (DefaultTableModel) tabelaSeries.getModel();
@@ -276,7 +332,8 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
                     s.getDirecao(),
                     s.getAnoLancamento(),
                     s.getTemporadas(),
-                    s.getStreamer()
+                    s.getStreamer(),
+                    s.getAssistiu()
                 });
             }
             } catch (Exception erroSql) {
@@ -290,9 +347,19 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
             try {
             
             String genero = textFieldPesquisaPorGenero.getText();
+            String assistiu = "";
+            String naoAssistiu = "";
+            
+            if(chackBoxAssistiu.isSelected()){
+                assistiu = "Sim";
+            }
+            
+            if(checkBoxNaoAssistiu.isSelected()){
+                naoAssistiu = "Não";
+            }
             // executando o select
             SerieDAO dao = new SerieDAO();
-            List<Serie> listSerie = dao.pesquisaSerieGenero(genero);
+            List<Serie> listSerie = dao.pesquisaSerieGenero(genero, assistiu, naoAssistiu);
         
             // colocando os dados na tabela
             DefaultTableModel model = (DefaultTableModel) tabelaSeries.getModel();
@@ -306,7 +373,8 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
                     s.getDirecao(),
                     s.getAnoLancamento(),
                     s.getTemporadas(),
-                    s.getStreamer()
+                    s.getStreamer(),
+                    s.getAssistiu()
                 });
             }
             } catch (Exception erroSql) {
@@ -321,6 +389,10 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
         textFieldPesquisaPorGenero.setText("");
         textFieldPesquisaPorNome.setText("");
     }//GEN-LAST:event_botaoLimparActionPerformed
+
+    private void checkBoxNaoAssistiuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxNaoAssistiuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBoxNaoAssistiuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,6 +432,8 @@ public class TelaPesquisaSeries extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLimpar;
+    private javax.swing.JCheckBox chackBoxAssistiu;
+    private javax.swing.JCheckBox checkBoxNaoAssistiu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;

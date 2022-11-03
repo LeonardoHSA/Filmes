@@ -51,7 +51,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         super("Tela de cadastro");
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(850, 500);
+        this.setSize(950, 600);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
@@ -89,6 +89,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         assistiuCheck = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(950, 600));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
